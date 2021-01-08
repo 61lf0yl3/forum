@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+   <script src="https://kit.fontawesome.com/d326388467.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/postView.css">
+    <title>Forum Post</title>
+    <!-- <meta http-equiv="refresh" content="3" /> -->
+</head>
+<body>
+    
+<header class="header">
+    <div class="container">
+        <div class="forum">
+        <h1><a href="/">FORUM</a></h1>
+        </div>
+        <!-- If user is authenticated, buttons "create post" and "logout" are available -->
+        {{if .AuthUser}}
+        <div class="bottom signed">
+            <form class="search" action="/filter?section=search" method="POST">
+                <input type="text" name="search" placeholder="Search by Threads">
+                <button class='btnsrch' type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <a href="/filter?section=my_posts" target="_blank" rel="noopener noreferrer"><button type="submit">My posts</button></a>
+            <a href="/filter?section=liked" target="_blank" rel="noopener noreferrer"><button type="submit">Liked posts</button></a>
+            <a href="/create"><button type="submit">Create a post</button></a>
+            <label class="username">{{ .AuthUser.Username }}</label>
+            <a href="/logout"><button type="submit" class="signout"><i class="fas fa-sign-out-alt"></i></button></a>
+        </div>
+        <!-- Else guest, buttons "log in" and "sign up" are available -->
+        {{ else }}
+        <div class="bottom notsigned">
+            <form class="search" action="/filter?section=search" method="POST">
+                <input type="text" name="search" placeholder="Search by Threads">
+                <button class='btnsrch' type="submit"><i class="fas fa-search"></i></button>
+            </form>       
+            <a href="/login"><button type="submit">Login</button></a>
+            <a href="/signup"><button type="submit">Register</button></a> 
+        </div>
+        {{ end }}
+    </div>
+</header>
+<section class="section">
+<div class="container">
+    <div class="post">
+        <!-- Displaying post Author -->
+        
+        {{ if .PostInfo }} 
+        <div class="post_author">
+            <span class="tag">Author: </span><span class="info">{{.Post.Author}}</span>
+        </div>
+        {{end}}
+        <!-- Displaying post content -->
+        {{ if .PostInfo }}    
+        <div class="post_info">
+            <div class="title">
+                <span class="tag">Title: </span>
+                <span class="info">{{.Post.Title}}</span>
+            </div>
+            <!-- post.info, threads ???? -->
+            {{ range .PostInfo }}
+            <div class="title">
+                <span class="tag">Threads: </span>
+                <span class="info">{{range .Threads}}#{{.Name}} {{end}}</span>
+            </div>
+            {{ end }}
+            <div class="post_date">
+                <span class="tag">Date: </span>
+                <span class="info">{{.Post.CreationDate}}</span>
+            </div>
+            <div class="post_content">
+                <span class="tag">Content: </span>
+                <span class="info">{{.Post.Content}}</span>   
+            </div>
+        </div>
+        {{ end }}
+        
+      <!-- Displaying Comments -->
+        <p class="tag comments">Comments</p>
+        {{ if .PostInfo }}
+            {{ range .PostInfo }}
+                {{ range .Comments }}
+                <div class="post_top">
+                    <div class="avatar"><i class="fas fa-user-ninja fa-3x"></i></div>
+                    <div class="description">
+                        <div class="author">{{.Author}}</div>
+                        <div class="date">{{ .CreationDate }}</div>
+                    </div>
+                </div>
+
+                <div class="post_bottom">
+                    <div class="content">{{.Content}}</div>
+                    <div class="content_info">
+                        <div class="like">
+                            <a class="like_title" href="/rate?comment_id={{.CommentID}}">Like</a>
+                            <span class="like_num">{{.LikeCnt}}</span>
+                        </div>
+                        <div class="dislike">
+                            <a class="dislike_title" href="/rate?comment_id=-{{.CommentID}}">Dislike</a>
+                            <span class="dislike_num">{{.DislikeCnt}}</span>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            {{ end }}
+        {{ end }}
+         
+        {{ if .AuthUser }}
+        <div class="comment_area">
+            <form class="form" method="POST">
+                <textarea class="textarea" name="comment" placeholder="What's your opinion?"></textarea>
+                <button class="btn" type="submit">Comment</button>
+            </form>
+        </div>
+        {{ end }}       
+        <!-- Need to add likes, dislikes, comments -->
+        <!-- If auth user, add functions to rate post, add comments  -->
+    </div>
+</div>
+</section>
+</body>
+</html>

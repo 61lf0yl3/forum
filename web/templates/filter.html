@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="https://kit.fontawesome.com/d326388467.js" crossorigin="anonymous"></script>
+    <title>{{.Section}}</title>
+</head>
+<body>
+    
+<header class="header">
+    <div class="container">
+        <div class="forum">
+            <h1><a href="/">FORUM</a></h1>
+        </div>
+        <!-- If user is authenticated, buttons "create post" and "logout" are available -->
+        {{if .AuthUser}}
+
+        <div class="bottom signed" id='signed'>
+            <form class="search" action="/filter?section=search" method="POST">
+                <input type="text" name="search" placeholder="Search by Threads">
+                <button class='btnsrch' type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <a href="/filter?section=my_posts" target="_blank" rel="noopener noreferrer"><button type="submit">My posts</button></a>
+            <a href="/filter?section=liked" target="_blank" rel="noopener noreferrer"><button type="submit">Liked posts</button></a>
+            <a href="/create"><button type="submit">Create a post</button></a>
+            <label class="username">{{ .AuthUser.Username }}</label>
+            <a href="/logout"><button type="submit" class="signout"><i class="fas fa-sign-out-alt"></i></button></a>
+        </div>
+        <!-- Else guest, buttons "log in" and "sign up" are available -->
+        {{ else }}
+        <div class="bottom notsigned" id="notsigned"> 
+            <form class="search" action="/filter?section=search" method="POST">
+                <input type="text" name="search" placeholder="Search by Threads">
+                <button class='btnsrch' type="submit"><i class="fas fa-search"></i></button>
+            </form>   
+            <a href="/login"> <button type="submit">Login</button></a>
+            <a href="/signup"><button type="submit">Register</button></a> 
+        </div>
+        {{ end }}
+        <!-- Search -->
+
+    </div>
+</header>
+
+<section class="section">
+    <div class="container">
+        <div class="posts">
+            <div class="srchres">
+                <span class="info">{{.Error}}</span>
+            </div>
+            <!-- Displaying of posts -->
+            {{if .PostScroll}}
+                {{range .PostScroll}}
+                <div class="post"> 
+                    <div class="post_top">
+                        <div class="avatar"><i class="fas fa-user-ninja fa-5x"></i></div>
+                        <div class="description">
+                            <div class="author">{{.Post.Author}}</div>
+                            <a class="title" target="_blank" rel="noopener noreferrer" href="/post?id={{.Post.ID}}">{{.Post.Title}}</a>
+                            <div class="threads">Threads: {{range .Threads}}#{{.Name}} {{end}}</div>
+                        </div>
+                    </div>
+                    <div class="post_bottom">
+                        <div class="content">{{.Post.Content}}</div>
+                        <div class="content_info">
+                            <div class="like">
+                                <a class="like_title" href="/rate?post_id={{.Post.ID}}">Like</a>
+                                <span class="like_num">{{.PostRate.LikeCount}}</span>
+                            </div>
+                            <div class="dislike">
+                                <a class="dislike_title" href="/rate?post_id=-{{.Post.ID}}">Dislike</a>
+                                <span class="dislike_num"> {{.PostRate.DislikeCount}}</span>
+                            </div>
+                            <div class="date">{{.Post.CreationDate}}</div>
+                        </div>
+                    </div>
+                </div>
+                {{end}}                
+            {{end}}
+        </div>
+    </div>
+</section>
+</body>
+</html>

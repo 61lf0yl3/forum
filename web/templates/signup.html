@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Registrtation Page</title>
+      <link rel="stylesheet" href="../css/signup.css">
+       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+  </head>
+
+<body>
+  <header class="header">
+    <div class="container">
+        <div class="forum">
+        <h1><a href="/">FORUM</a></h1>
+        </div>
+        <div class="bottom">    
+            <a href="/login"> <button type="submit">Login</button></a>
+        </div>    
+    </div>
+</header>
+
+<section class="section">
+   <div class="container">
+        <form class="form" action="/signup" method="post">
+          <label for="firstname"><b>Name</b></label>
+          <input type="text" placeholder="" name="Firstname" required>
+          <label for="lastname"><b>Last name</b></label>
+          <input type="text" placeholder="" name="Lastname" required>
+          {{ with .Errors.FLName }}
+          <p class="error">{{ . }}</p>
+          {{ end }}
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="" name="Username" required>
+          {{ with .Errors.Username }}
+          <p class="error">{{ . }}</p>
+          {{ end }}
+          <label for="email"><b>E-mail</b></label>
+          <input type="email" placeholder="" name="Email" required>
+          {{ with .Errors.Email }}
+          <p class="error">{{ . }}</p>
+          {{ end }}
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="" name="Password" required>
+          {{ with .Errors.Password }}
+          <p class="error">{{ . }}</p>
+          {{ end }}
+          <input type="password" placeholder="Repeat a password" name="Confirm" required>
+          {{ with .Errors.Confirm }}
+          <p class="error">{{ . }}</p>
+          {{ end }}
+          <button type="submit">Register</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+          <div class="container">  
+            <span class="psw"><a href="#">Forgot a password?</a></span>
+          </div>
+        </form> 
+    </div>
+</section>
+</body>
+</html>
+

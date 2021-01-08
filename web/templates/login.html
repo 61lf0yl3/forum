@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+
+    <header class="header">
+    <div class="container">
+        <div class="forum">
+        <h1><a href="/">FORUM</a></h1>
+        </div>
+        <div class="bottom">
+            <a href="/signup"><button type="submit">Register</button></a>
+        </div>        
+    </div>
+</header>
+
+<section class="section">
+   <div class="container">
+        <form class="form" action="/login" method="POST">
+                <p>
+                <label for="uname"><b>Username or E-mail</b></label>
+                <input type="text" placeholder="" name="Username" required>
+            </p>
+            <p>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="" name="Password" required>
+            </p>
+            <p>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+              </label>
+            </p>
+            <a href="/main"><button type="submit">Login</button></a>
+        </form>
+    </div>
+</section>
+</body>
+</html>

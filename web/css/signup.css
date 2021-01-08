@@ -1,0 +1,115 @@
+.container {
+    width: 100%;
+    
+    margin: 0 auto;
+}
+
+.header{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #243743;   
+}
+.forum{ 
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    display:inline-block;
+    margin-left: 20px;
+}
+
+.forum a {
+    color: #28B78D;
+    text-decoration: none;
+}
+
+.bottom{
+    padding: 10px;
+    float: right;
+    margin-top: 17px;
+}
+
+button{
+    color: #FAFAFA;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    background-color: #28B78D;
+    margin: 0 10px 0 0; 
+    border-radius: 5px;
+    border : none;
+    cursor: pointer;
+    max-width: 200px;
+    min-width: 150px;
+    height: 50px;
+    transition: background-color .2s linear;
+}
+
+button:hover {
+    background-color: #166951;
+}
+
+.section {
+    width: 100%;
+    margin: 130px auto;
+}
+
+
+.form {
+    margin: 40px auto 0 auto;
+    display: block;
+    width: 100%;
+    max-width: 600px     
+}
+
+label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #243743; 
+
+} 
+
+  /* Full-width inputs */
+  input[type=text], input[type=password], input[type=email]  {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+   
+  }
+
+  p {
+     font-family: 'Roboto', sans-serif;
+     color: red;
+     font-size: 16px;
+     font-weight: 700;
+     margin-top: 0px;
+  }
+  
+  
+  /* The "Forgot password" text */
+  span.psw {
+    font-family: 'Roboto', sans-serif;
+    float: right;
+    padding-top: 16px;
+  }
+  
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 300px) {
+    span.psw {
+      display: block;
+      float: none;
+    }
+    .cancelbtn {
+      width: 100%;
+    }
+  }
+  
+  .error {
+    color: red; 
+    font-weight: bold;
+  }

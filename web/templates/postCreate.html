@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/postCreate.css">
+    <script src="https://kit.fontawesome.com/d326388467.js" crossorigin="anonymous"></script>
+
+    <title>Creating Post</title>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="forum">
+        <h1><a href="/">FORUM</a></h1>
+        </div>
+
+        {{if .Username}}
+        <div class="bottom signed">
+            <label class="username">{{ .Username }}</label>
+            <a href="/logout"><button type="submit" class="signout"><i class="fas fa-sign-out-alt"></i></button></a>
+        </div>
+        {{end}}
+    </div>
+</header>
+
+<section class="section">
+   <div class="container">
+    <div class="post">
+        <h1>Post Creation Workshop</h1>
+        <form class="form" action="/create" method="POST">
+            <div>
+                <label>Category</label>
+                <input type="text" name="thread" placeholder="E.g.: music, art ...">
+                {{ with .Errors.Category }}
+                <p class="empty">{{ . }}</p>
+                {{ end }}
+                <label for="title">Title</label>
+                <input type="text" name="title">
+                {{ with .Errors.Title }}
+                <p class="empty">{{ . }}</p>
+                {{ end }}
+            </div>
+            <div>
+                <textarea class="textarea" name="postContent" placeholder="What's new?"></textarea>
+                {{ with .Errors.Content }}
+                <p class="empty">{{ . }}</p>
+                {{ end }}
+                <button class="btn" type="submit">Post</button>  
+            </div>
+        </form>
+    </div>
+    </div>
+</section>
+</body>
+</html>
