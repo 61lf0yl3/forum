@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/astgot/forum/internal/model"
+	"forum/internal/model"
 )
 
 // InsertThreadInfo ..

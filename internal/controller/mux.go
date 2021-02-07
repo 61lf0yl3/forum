@@ -4,7 +4,7 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/astgot/forum/internal/database"
+	"forum/internal/database"
 )
 
 var tpl = template.Must(template.ParseGlob("web/templates/*"))

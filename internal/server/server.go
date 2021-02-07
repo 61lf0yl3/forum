@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/astgot/forum/internal/controller"
-	"github.com/astgot/forum/internal/database"
+	"forum/internal/controller"
+
+	"forum/internal/database"
 )
 
 // Server ..

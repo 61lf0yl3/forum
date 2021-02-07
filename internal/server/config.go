@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/astgot/forum/internal/database"
+	"forum/internal/database"
 )
 
 // Config ...

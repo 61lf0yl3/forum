@@ -1,4 +1,4 @@
-module github.com/astgot/forum
+module forum
 
 go 1.13
 

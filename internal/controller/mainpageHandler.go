@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/astgot/forum/internal/model"
+	"forum/internal/model"
 )
 
 // MainHandle ...

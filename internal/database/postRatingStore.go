@@ -3,7 +3,7 @@ package database
 import (
 	"fmt"
 
-	"github.com/astgot/forum/internal/model"
+	"forum/internal/model"
 )
 
 // AddRateToPost ...

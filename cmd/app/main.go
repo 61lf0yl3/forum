@@ -3,7 +3,8 @@ package main
 import (
 	"log"
 
-	"github.com/astgot/forum/internal/server"
+	"forum/internal/server"
+
 	_ "github.com/mattn/go-sqlite3" // SQLite driver
 )
 

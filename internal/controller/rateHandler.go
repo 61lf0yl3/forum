@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/astgot/forum/internal/model"
+	"forum/internal/model"
 )
 
 // RateHandler ... /rate?post_id= || /rate?comment_id=

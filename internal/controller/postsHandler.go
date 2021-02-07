@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/astgot/forum/internal/model"
+	"forum/internal/model"
 )
 
 // CreatePostHandler ...

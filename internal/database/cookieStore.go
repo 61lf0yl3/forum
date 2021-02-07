@@ -3,7 +3,7 @@ package database
 import (
 	"net/http"
 
-	"github.com/astgot/forum/internal/model"
+	"forum/internal/model"
 )
 
 // InsertSession ...
